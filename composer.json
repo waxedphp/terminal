@@ -3,7 +3,7 @@
     "description": "Command line interpreter frontend - within WaxedPHP environment.",
     "type": "library",
     "license": "MIT",
-    "version": "0.2.6",
+    "version": "0.3.0",
     "autoload": {
         "psr-4": {
             "Waxedphp\\Terminal\\": "src/"
@@ -15,6 +15,6 @@
         }
     ],
     "require": {
-      "waxedphp/waxedphp":"^0.2.7"
+      "waxedphp/waxedphp":"^0.3.0"
     }
 }

@@ -107,7 +107,7 @@
             prompt: 'xxx> ',
             keymap: {
               'CTRL+C': function() {
-                console.log('CTRL+C');
+                //console.log('CTRL+C');
                 that.request('INTERRUPT');
               }
               
@@ -128,11 +128,11 @@
         }, opts);
         $('body').keydown(function(event) {
           if (event.ctrlKey) { 
-            console.log("Hey! Ctrl+["+event.keyCode+"] event captured!");
+            //console.log("Hey! Ctrl+["+event.keyCode+"] event captured!");
             //event.preventDefault(); 
           }
           if(event.ctrlKey && event.keyCode == 67) { 
-            console.log("Hey! Ctrl+C event captured!");
+            //console.log("Hey! Ctrl+C event captured!");
             event.preventDefault(); 
             that.request('INTERRUPT');
           }
