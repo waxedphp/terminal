@@ -1,6 +1,8 @@
 <?php
 namespace Waxedphp\Terminal;
 
+use Waxedphp\Terminal\Parsers\PosixCommandLineParser;
+
 class Setter extends \Waxedphp\Waxedphp\Php\Setters\AbstractSetter {
 
   /**
@@ -31,6 +33,10 @@ class Setter extends \Waxedphp\Waxedphp\Php\Setters\AbstractSetter {
     $this->setup['theme'] = $theme;
     return $this;
   }
+  
+  function getParser() {
+    return new PosixCommandLineParser();
+  }
 
   /**
   * value
@@ -38,7 +44,7 @@ class Setter extends \Waxedphp\Waxedphp\Php\Setters\AbstractSetter {
   * @param mixed $value
   * @return array<mixed>
   */
-  public function value(mixed $value): array {
+  public function value(mixed $value = null): array {
     $a = [];
     $b = $this->getArrayOfAllowedOptions();
     if (!empty($b)) {
@@ -46,6 +52,19 @@ class Setter extends \Waxedphp\Waxedphp\Php\Setters\AbstractSetter {
     }
     $a['value'] = $value;
     return $a;
+  }
+
+  public function resume(string $value): array {
+    $a = [
+      'response' => $value,
+      'resume' => true,
+    ];
+    return $a;
+  }
+  
+  public function parse(string $command) {
+    $prs = $this->getParser();
+    return $prs->getIt($command);    
   }
 
 }
